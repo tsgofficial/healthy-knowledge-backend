@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "tes-backend",
+      "name": "healthy-knowledge-backend",
       "script": "src/index.js",
       "instances": 1,
       "autorestart": true,
