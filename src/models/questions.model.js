@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-  const Users = sequelize.define(
-    'users',
+  const Questions = sequelize.define(
+    'questions',
     {
       id: {
         autoIncrement: true,
@@ -8,27 +8,22 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
         primaryKey: true,
       },
-      email: {
-        type: DataTypes.STRING(100),
+      user_id: {
+        type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
-        unique: true,
       },
-      password: {
-        type: DataTypes.STRING(100),
+      title: {
+        type: DataTypes.TEXT,
         allowNull: true,
       },
-      firstname: {
-        type: DataTypes.STRING(100),
-        allowNull: true,
-      },
-      lastname: {
-        type: DataTypes.STRING(100),
+      description: {
+        type: DataTypes.TEXT,
         allowNull: true,
       },
     },
     {
       sequelize,
-      tableName: 'users',
+      tableName: 'questions',
       timestamps: false,
       indexes: [
         {
@@ -41,9 +36,9 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
 
-  // Users.associate = function (models) {
-  //   Users.hasMany(models.questions, { foreignKey: 'user_id', as: 'questions' });
+  // Questions.associate = function (models) {
+  //   Questions.belongsTo(models.users, { foreignKey: 'user_id', as: 'user' });
   // };
 
-  return Users;
+  return Questions;
 };
